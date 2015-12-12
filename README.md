@@ -1,7 +1,7 @@
 #Text to speech applet
 A text reading applet for Linux Mint Cinnamon
 
-![Alt text](../master/screenshots/reading.png "Text to speech applet")
+![Alt text](../master/screenshots/reading_small.png "Text to speech applet")
 
 ## Features
 * read aloud the text
