@@ -4,7 +4,7 @@ A text reading applet for Linux Mint Cinnamon
 ![Alt text](../master/screenshots/reading_small.png "Text to speech applet")
 
 ## Features
-* read aloud the text
+* read aloud text
 * pause/resume reading aloud the text
 * read lines and stop  
   reading is stopped after the specified number of lines  
