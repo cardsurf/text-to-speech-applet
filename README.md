@@ -19,16 +19,16 @@ A text reading applet for Linux Mint Cinnamon
 2. Enable the applet in Cinnammon settings
 
 ##To start reading
-Highlight the text to read.  
-Click on the applet to start reading the text.
+1. Highlight the text to read
+2. Click on the applet to read the text
 
 ##To stop reading
-Click on the applet when the text is read.
+Click on the applet when the text is read
 
 ##To pause/resume reading
-Click the middle mouse button on the applet when the text is read.
+Click the middle mouse button on the applet when the text is read
 
-##Voice
+##Voice configuration
 To customize the voice command:  
   
 1. Right click on the applet and click on "Configure"
