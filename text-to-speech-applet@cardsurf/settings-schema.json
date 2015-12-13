@@ -52,7 +52,7 @@
 		"type": "entry",
 		"default": "\\s*[\\n\\r]+[\\n\\r\\s]*",
 		"description": "Line separator",
-		"tooltip": "A regular expression seperating lines of text",
+		"tooltip": "A regular expression separating lines of text",
 		"dependency": "read_lines_and_stop"
 	},
 	"reading_end": {
@@ -73,13 +73,13 @@
 		"type" : "filechooser",
 		"default" : "~/.local/share/cinnamon/applets/text-to-speech-applet@cardsurf/icons/book-paused.png",
 		"description" : "Pause icon",
-		"tooltip": "An icon displayed when reading is paused"
+		"tooltip": "An icon displayed when paused"
 	},
 	"gui_reading_icon_filename" : {
 		"type" : "filechooser",
 		"default" : "~/.local/share/cinnamon/applets/text-to-speech-applet@cardsurf/icons/book-on.png",
 		"description" : "Reading icon",
-		"tooltip": "An icon displayed when reading the text"
+		"tooltip": "An icon displayed when reading"
 	},
 	"gui_end" : {
 		"type" : "separator"
