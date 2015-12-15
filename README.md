@@ -14,6 +14,9 @@ A text reading applet for Linux Mint Cinnamon
   * pick the clipboard that contains the text to read
   * set icons displayed in the panel
 
+##Download
+[Download zip archive](http://cinnamon-spices.linuxmint.com/uploads/applets/AG53-LULR-5880.zip)
+
 ##Installation
 1. Extract .zip archive to ~/.local/share/cinnamon/applets
 2. Enable the applet in Cinnammon settings
