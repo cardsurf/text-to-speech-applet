@@ -337,9 +337,14 @@ MyApplet.prototype = {
 	},
 
 	spawn_voice_process: function (argv) {
-		this.voice_process.command_argv = argv;
-		this.voice_process.spawn_async();
-		this.set_gui_reading();
+        try {
+		    this.voice_process.command_argv = argv;
+		    this.voice_process.spawn_async();
+		    this.set_gui_reading();
+        }
+        catch(e) {
+            global.log("Error while spawning voice process: " + e);
+        }
 	},
 
 };

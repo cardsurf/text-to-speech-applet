@@ -120,12 +120,15 @@ BackgroundProcess.prototype = {
 	},
 
     spawn_async: function() {
-		this.spawn_async_calls++;
-		if(this.spawn_async_calls == 1 && !this.spawned_async) {
-			this._spawn_async_with_pipes();
-			this.spawned_async = true;
-		}
-		this.spawn_async_calls--;
+        try {
+		    this.spawn_async_calls++;
+		    if(this.spawn_async_calls == 1 && !this.spawned_async) {
+			    this._spawn_async_with_pipes();
+			    this.spawned_async = true;
+		    }
+        } finally {
+		    this.spawn_async_calls--;
+        }
     },
 
     _spawn_async_with_pipes: function() {
@@ -188,11 +191,14 @@ BackgroundProcess.prototype = {
     },
 
     pause: function() {
-		this.pause_resume_async_calls++;
-		if(this.pause_resume_async_calls == 1 && !this.paused) {
-			this.send_stop_signal();
-		}
-		this.pause_resume_async_calls--;
+        try {
+		    this.pause_resume_async_calls++;
+		    if(this.pause_resume_async_calls == 1 && !this.paused) {
+			    this.send_stop_signal();
+		    }
+        } finally {
+		    this.pause_resume_async_calls--;
+        }
     },
 
     send_stop_signal: function() {
@@ -204,11 +210,14 @@ BackgroundProcess.prototype = {
     },
 
     resume: function() {
-		this.pause_resume_async_calls++;
-		if(this.pause_resume_async_calls == 1 && this.paused) {
-			this.send_cont_signal();
-		}
-		this.pause_resume_async_calls--;
+        try {
+		    this.pause_resume_async_calls++;
+		    if(this.pause_resume_async_calls == 1 && this.paused) {
+			    this.send_cont_signal();
+		    }
+        } finally {
+		    this.pause_resume_async_calls--;
+        }
     },
 
     send_cont_signal: function() {
