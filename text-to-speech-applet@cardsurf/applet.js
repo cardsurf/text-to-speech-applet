@@ -23,10 +23,10 @@ function MyApplet(metadata, orientation, panel_height, instance_id) {
 };
 
 MyApplet.prototype = {
-    __proto__: Applet.TextApplet.prototype,
+	__proto__: Applet.IconApplet.prototype,
 
     _init: function(metadata, orientation, panel_height, instance_id) {
-        Applet.TextApplet.prototype._init.call(this, orientation, panel_height, instance_id);
+        Applet.IconApplet.prototype._init.call(this, orientation, panel_height, instance_id);
 
 		this.panel_height = panel_height;
 		this.orientation = orientation;
@@ -38,7 +38,8 @@ MyApplet.prototype = {
 		this.line_resume_reading = 0;
 		this.line_separator_regex = null;
 		this.hover_popup = null;
-		this.applet_gui = null;
+		this.file_schema = "file://";
+		this.home_shortcut = "~";
 
 		this.settings = new Settings.AppletSettings(this, metadata.uuid, instance_id);
 		this.clipboard_type = 0;
@@ -107,15 +108,39 @@ MyApplet.prototype = {
 	},
 
 	set_gui_idle: function () {
-		this.applet_gui.set_icon(this.gui_idle_icon_filename);
+		this.set_gui_icon(this.gui_idle_icon_filename);
 	},
 
 	set_gui_paused: function () {
-		this.applet_gui.set_icon(this.gui_pause_icon_filename);
+		this.set_gui_icon(this.gui_pause_icon_filename);
 	},
 
 	set_gui_reading: function () {
-		this.applet_gui.set_icon(this.gui_reading_icon_filename);
+		this.set_gui_icon(this.gui_reading_icon_filename);
+	},
+
+	set_gui_icon: function (icon_path) {
+		let path = this.remove_file_schema(icon_path);
+        path = this.replace_tilde_with_home_directory(path);
+		let exists = this.file_exists(path);
+        if (exists) {
+            this.set_applet_icon_path(path);
+        }
+	},
+
+	remove_file_schema: function (path) {
+		path = path.replace(this.file_schema, "");
+		return path;
+	},
+
+	replace_tilde_with_home_directory: function (path) {
+		let home_directory = GLib.get_home_dir();
+		path = path.replace(this.home_shortcut, home_directory);
+		return path;
+	},
+
+	file_exists: function (path) {
+        return GLib.file_test(path, GLib.FileTest.EXISTS);
 	},
 
 	_init_line_separator_regex: function () {
@@ -132,9 +157,6 @@ MyApplet.prototype = {
 	},
 
 	_init_gui: function () {
-		this.applet_gui = new AppletGui.AppletGui(this.panel_height);
-		this.actor.destroy_all_children();
-		this.actor.add(this.applet_gui.actor, { x_align: St.Align.MIDDLE, y_align: St.Align.MIDDLE, y_fill: false });
 		this.set_gui_idle();
 	},
 

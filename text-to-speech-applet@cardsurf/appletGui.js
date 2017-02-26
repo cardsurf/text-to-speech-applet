@@ -9,56 +9,6 @@ const PopupMenu = imports.ui.popupMenu;
 
 
 
-function AppletGui(panel_height) {
-	this._init(panel_height);
-};
-
-AppletGui.prototype = {
-
-    _init: function(panel_height) {
-
-		this.panel_height = panel_height;
-
-		this.actor = new St.BoxLayout();
-		this.icon = new St.Icon();
-
-		this._init_icon();
-		this._init_actor();
-    },
-
-	_init_icon: function() {
-		let size = this.panel_height * 0.85;
-		this.icon.set_icon_size(size);
-	},
-
-	_init_actor: function() {
-		this.actor.add(this.icon);
-	},
-
-	set_icon: function(icon_path) {
-		let icon_file = this._load_icon_file(icon_path);
-   	    this._set_gicon(icon_file);
-	},
-
-    _load_icon_file: function(icon_path) {
-		icon_path = this._replace_tilde_with_home_directory(icon_path)
-        let icon_file = Gio.file_new_for_path(icon_path);
-        let icon_file = new Gio.FileIcon({ file: icon_file });
-		return icon_file;
-    },
-
-	_replace_tilde_with_home_directory: function (path) {
-		let home_directory = GLib.get_home_dir();
-		path = path.replace("~", home_directory);
-		return path;
-	},
-
-    _set_gicon: function(file_icon) {
-		this.icon.set_gicon(file_icon);
-    },
-
-};
-
 
 
 
