@@ -51,11 +51,44 @@ MyApplet.prototype = {
 		this.gui_pause_icon_filename = "";
 		this.gui_reading_icon_filename = "";
 
+        this._init_layout();
 		this._bind_settings();
 		this._init_voice_process();
 		this._init_line_separator_regex();
 		this._init_hover_popup();
 		this._init_gui();
+    },
+
+    _init_layout: function () {
+        this._enable_hotizontal_vertical_layout();
+    },
+
+    _enable_hotizontal_vertical_layout: function() {
+        let supported = this.is_vertical_layout_supported();
+        if(supported) {
+            this._try_enable_hotizontal_vertical_layout();
+        }
+    },
+
+    is_vertical_layout_supported: function() {
+        return this._is_set_allowed_layout_defined();
+    },
+
+    _is_set_allowed_layout_defined: function() {
+        return this.is_function_defined(this.setAllowedLayout);
+    },
+
+    is_function_defined: function(reference) {
+        return typeof reference === "function";
+    },
+
+    _try_enable_hotizontal_vertical_layout: function() {
+        try {
+             this.setAllowedLayout(Applet.AllowedLayout.BOTH);
+        }
+        catch(e) {
+            global.log("Error while enabling vertical and horizontal layout: " + e);
+        }
     },
 
 	_bind_settings: function () {
