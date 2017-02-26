@@ -284,14 +284,17 @@ TerminalProcess.prototype = {
     },
 
     spawn_async: function() {
-		this.spawn_async_calls++;
-		if(this.spawn_async_calls == 1 && !this.spawned_async) {
-			this.tmp_filepath = this.generate_tmp_filename();
-			let command_argv = this.get_command_argv();
-		    [this.success]  = GLib.spawn_async(null, command_argv, null, this.flags, null, null);
-			this.spawned_async = true;
-		}
-		this.spawn_async_calls--;
+        try {
+		    this.spawn_async_calls++;
+		    if(this.spawn_async_calls == 1 && !this.spawned_async) {
+			    this.tmp_filepath = this.generate_tmp_filename();
+			    let command_argv = this.get_command_argv();
+		        [this.success]  = GLib.spawn_async(null, command_argv, null, this.flags, null, null);
+			    this.spawned_async = true;
+		    }
+        } finally {
+		    this.spawn_async_calls--;
+        }
     },
 
     generate_tmp_filename: function() {
