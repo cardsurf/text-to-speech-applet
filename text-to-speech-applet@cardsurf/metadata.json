@@ -1,6 +1,7 @@
 {
+    "last-edited": "1450166310", 
+    "version": "1.0.0", 
     "description": "A text reading applet", 
-    "version": "1.0.0",
-    "uuid": "text-to-speech-applet@cardsurf", 
-    "name": "Text to speech applet"
+    "name": "Text to speech applet", 
+    "uuid": "text-to-speech-applet@cardsurf"
 }
