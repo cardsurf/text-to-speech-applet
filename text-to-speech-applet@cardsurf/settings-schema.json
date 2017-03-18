@@ -1,4 +1,4 @@
-{    
+{
 
     "settings_start" : {
     	"type" : "separator"
@@ -41,7 +41,7 @@
     	"type": "spinbutton",
     	"default": 1,
     	"min": 1,
-    	"max": 1000000, 
+    	"max": 1000000,
     	"step": 1,
     	"units": "lines and stop",
     	"description": "Read",

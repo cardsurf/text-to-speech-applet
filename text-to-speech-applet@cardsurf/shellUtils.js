@@ -40,7 +40,7 @@ ShellOutputProcess.prototype = {
 
     spawn_sync: function() {
     	let [success, standard_output_content, standard_error_content] = GLib.spawn_sync(
-    		null, 
+    		null,
     		this.command_argv,
     		null,
     		this.flags,
@@ -65,7 +65,7 @@ ShellOutputProcess.prototype = {
     },
 
     spawn_async: function() {
-        let [success, pid, standard_input_file_descriptor, 
+        let [success, pid, standard_input_file_descriptor,
     	     standard_output_file_descriptor, standard_error_file_descriptor] = GLib.spawn_async_with_pipes(
     		 null,
     		 this.command_argv,
@@ -132,7 +132,7 @@ BackgroundProcess.prototype = {
     },
 
     _spawn_async_with_pipes: function() {
-        let [success, pid, standard_input_file_descriptor, 
+        let [success, pid, standard_input_file_descriptor,
     	     standard_output_file_descriptor, standard_error_file_descriptor] = GLib.spawn_async_with_pipes(
     		 null,
     		 this.command_argv,
@@ -151,18 +151,18 @@ BackgroundProcess.prototype = {
 
     add_exit_callback: function() {
     	GLib.child_watch_add(GLib.PRIORITY_DEFAULT_IDLE,
-    						 this.pid, 
-    						 Lang.bind(this, this.on_exit), 
+    						 this.pid,
+    						 Lang.bind(this, this.on_exit),
     						 null,
     						 null);
     },
-    
+
     on_exit: function(pid, status) {
     	GLib.spawn_close_pid(pid);
     	this.set_not_running();
     	this._invoke_callback_process_finished(pid, status);
     },
-    
+
     set_not_running: function() {
     	this.pid = this.default_pid;
     	this.spawned_async = false;
@@ -171,7 +171,7 @@ BackgroundProcess.prototype = {
 
     _invoke_callback_process_finished: function(pid, status) {
     	if(this.callback_process_finished != null) {
-    		this.callback_process_finished.call(this.callback_object, pid, status); 
+    		this.callback_process_finished.call(this.callback_object, pid, status);
     	}
     },
 
@@ -318,7 +318,7 @@ TerminalProcess.prototype = {
 
     get_full_bash_command: function() {
     	let start_bash = "bash -c \"";
-    	let write_terminal_pid = "echo $$ > " + this.tmp_filepath + ";" 
+    	let write_terminal_pid = "echo $$ > " + this.tmp_filepath + ";"
     	let exec_user_command = this._bash_command;
     	let keep_terminal_opened = "exec bash\"";
     	return start_bash + write_terminal_pid + exec_user_command + keep_terminal_opened;

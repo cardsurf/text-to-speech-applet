@@ -28,7 +28,7 @@ ClipboardReader.prototype = {
     		case AppletConstants.ClipboardType.SELECTION_CLIPBOARD:
     			text = this.read_text_selection_clipboard();
     			break;
-    	} 
+    	}
     	return text;
     },
 
