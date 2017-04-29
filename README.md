@@ -15,7 +15,7 @@ A text reading applet for Linux Mint Cinnamon
   * set icons displayed in the panel
 
 ## Download
-[Download zip archive](http://cinnamon-spices.linuxmint.com/uploads/applets/AG53-LULR-5880.zip)
+[Download zip archive](https://cinnamon-spices.linuxmint.com/files/applets/text-to-speech-applet@cardsurf.zip)
 
 ## Installation
 1. Extract .zip archive to ~/.local/share/cinnamon/applets
