@@ -19,7 +19,7 @@ A text reading applet for Linux Mint Cinnamon
 
 ## Installation
 1. Extract .zip archive to ~/.local/share/cinnamon/applets
-2. Enable the applet in Cinnammon settings
+2. Enable the applet in Cinnamon settings
 
 ## To start reading
 1. Highlight the text to read
