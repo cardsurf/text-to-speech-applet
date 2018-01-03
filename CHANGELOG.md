@@ -1,7 +1,11 @@
 # Changelog
 
-### Version 1.1.1
+### Version 1.2.0
 Added support for Cinnamon 3.4  
+Added support for keyboard shortcuts  
+Added Croatian translation (thanks [muzena](https://github.com/muzena))  
+Added Swedish translation (thanks [eson57](https://github.com/eson57))  
+Added Danish translation (thanks [Alan01](https://github.com/Alan01))  
 
 ### Version 1.1.0
 Added support for vertical panels  
